@@ -1,12 +1,14 @@
 <template>
   <div id="app">
-    <div>
-      <input type="text" v-model="name" @keyup.enter="busqueda_pokemon"><button @click="busqueda_pokemon" >Buscar</button>
+    <div class="buscador">
+      <h2>Busca tu pokémon</h2>
+      <input type="text" v-model="name" @keyup.enter="busqueda_pokemon" placeholder="por número o nombre"><button @click="busqueda_pokemon" >Buscar</button>
     </div>
-    <div>
+    <div class="imagen">
       <img :src="datos.sprites.front_default" alt=""/>
       <h3> {{this.datos.name}} </h3>
     </div>
+    <div class="container">
     <div>
       <h4>Habilidades</h4>
       <ul>
@@ -19,11 +21,11 @@
         <li v-for="(move, index) in get_moves" :key="index"> {{move.move.name}} </li>
       </ul>
     </div>
+    </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'App',
   data() {
@@ -71,5 +73,14 @@ export default {
 </script>
 
 <style>
+.buscador, .imagen{
+  text-align: center;
+}
 
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
 </style>
